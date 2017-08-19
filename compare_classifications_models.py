@@ -5,6 +5,8 @@
 
 import numpy as np
 
+import pandas as pd
+
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
@@ -30,6 +32,13 @@ class model():
                                                 test_size=0.3,
                                                 random_state=43)
                                                 
+    def scatter_matrix(self):
+        """  """
+        
+        df = pd.DataFrame(self.data_set.data, 
+                          columns=self.data_set.feature_names)
+        pd.tools.plotting.scatter_matrix(df)
+    
     def learn_model(self):
         """ create and learn model """
         
@@ -60,3 +69,4 @@ if __name__ == '__main__':
     ai = model()
     ai.prepare_data()
     ai.learn_model()
+    ai.scatter_matrix()
