@@ -33,7 +33,7 @@ class model():
                                                 random_state=43)
                                                 
     def scatter_matrix(self):
-        """  """
+        """ display scatter matrix """
         
         df = pd.DataFrame(self.data_set.data, 
                           columns=self.data_set.feature_names)
