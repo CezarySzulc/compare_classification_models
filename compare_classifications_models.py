@@ -35,9 +35,16 @@ class model():
     def scatter_matrix(self):
         """ display scatter matrix """
         
+        target = pd.DataFrame(self.data_set.target, columns=['flower'])
         df = pd.DataFrame(self.data_set.data, 
                           columns=self.data_set.feature_names)
-        pd.tools.plotting.scatter_matrix(df)
+        color_map = {
+            0: "black", 
+            1: "yellow", 
+            2: "blue"
+        }
+        colors = target['flower'].map(lambda x: color_map.get(x))
+        pd.tools.plotting.scatter_matrix(df, color=colors)
     
     def learn_model(self):
         """ create and learn model """
